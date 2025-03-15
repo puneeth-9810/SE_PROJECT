@@ -7,17 +7,16 @@ const Header = () => {
 
   return (
     <header className="bg-gradient-to-r from-[#D3E4FD] to-[#e6f7ff] py-4 px-6 flex justify-between items-center shadow-sm">
-      <div className="flex items-center">
-        <img 
-          src="/lovable-uploads/d0b20645-30d7-401d-b3a6-10060a2a56a4.png" 
-          alt="NITC Logo" 
-          className="h-16 w-16 object-contain"
-        />
-        <div className="ml-2">
-          <h1 className="text-2xl font-bold text-gray-800">NITC</h1>
-          <h2 className="text-xl text-gray-700">Health Care Center</h2>
-        </div>
-      </div>
+      {/* <div className="flex items-center"> */}
+      <div className="flex items-center space-x-4">
+    <img 
+      src="/image/hi.jpg" 
+      alt="NITC Logo" 
+      className="h-20 w-auto object-contain"
+    />
+    <h1 className="text-2xl font-bold">NITC Health Care Center</h1>
+  </div>
+
       
       {/* Mobile menu button */}
       <div className="md:hidden">

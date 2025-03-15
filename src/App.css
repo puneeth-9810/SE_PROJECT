@@ -40,3 +40,11 @@
 .read-the-docs {
   color: #888;
 }
+
+.bg-custom {
+  background-image: url("D:\Program Files\WhatsApp Image 2025-03-15 at 13.58.13_6036cc96.jpg"); /* Update with the correct path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+

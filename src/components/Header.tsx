@@ -33,7 +33,7 @@ const Header = () => {
       {/* Desktop navigation */}
       <nav className="hidden md:flex space-x-8">
         <a href="#patients" className="text-lg text-gray-700 hover:text-[#33C3F0] transition-colors duration-200" onClick={()=>navigate('/b')}>Patients</a>
-        <a href="#pharmacist" className="text-lg text-gray-700 hover:text-[#33C3F0] transition-colors duration-200">Pharmacist</a>
+        <a href="#pharmacist" className="text-lg text-gray-700 hover:text-[#33C3F0] transition-colors duration-200" onClick={()=>navigate('/c')}>Pharmacist</a>
         <a href="#doctor" className="text-lg text-gray-700 hover:text-[#33C3F0] transition-colors duration-200">Doctor</a>
       </nav>
       

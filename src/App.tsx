@@ -9,6 +9,15 @@ import AppointmentPage from "./pages/AppointmentPage";
 import PrescriptionLookup from "./pages/PrescriptionLookup"
 import LoginPage from "./pages/LoginPage"
 import DashboardPage from "./pages/DashboardPage"
+import RecordsDashboard from "./pages/RecordsDashboard";
+import MedicalCertificatePage from "./pages/MedicalCertificates";
+import DoctorLoginPage from "./pages/DoctorLoginPage";
+import AppointmentsPage from "./pages/AppointmentsPage";
+import PrescriptionPage from "./pages/PrescriptionPage";
+import RequestsPage from "./pages/RequestsPage";
+import GiveawayMedicinesPage from "./pages/Giveaway";
+import MedicineList from "./pages/MedicineList";
+import PharmacistPrescription from "./pages/PharmacistPrescription";
 
 const queryClient = new QueryClient();
 
@@ -24,7 +33,16 @@ const App = () => (
           <Route path="/b" element={<PrescriptionLookup />} />
           <Route path="/c" element={<LoginPage />} />
           <Route path ="/d" element ={<DashboardPage/>}/>
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/g" element={<DoctorLoginPage />} />
+          <Route path="/e"  element={<RecordsDashboard/>}></Route>
+          <Route path="/f"  element={<MedicalCertificatePage/>}></Route>
+          <Route path="/h"  element={<AppointmentsPage/>}/>
+          <Route path="/i"  element={<PrescriptionPage/>}/>
+          <Route path="/j"  element={<RequestsPage/>}/>
+          <Route path="/k"  element={<GiveawayMedicinesPage/>}/>
+          <Route path ='/l' element={<MedicineList/>}/>
+          <Route path ='/m' element ={<PharmacistPrescription/>}/>
+         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

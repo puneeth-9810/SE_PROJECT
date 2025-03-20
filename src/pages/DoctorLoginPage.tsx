@@ -7,10 +7,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/toaster";
 import { useToast } from "@/hooks/use-toast";
-import { Mail } from "lucide-react";
+import { Mail, ArrowRight, LockKeyhole } from "lucide-react";
 import OTPInputForm from "@/components/OTPInputForm";
 
-const PrescriptionLookup = () => {
+const DoctorLoginPage = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ const PrescriptionLookup = () => {
 
   const handleSendOtp = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    
     if (!email || !email.includes('@')) {
       toast({
         title: "Invalid email",
@@ -30,7 +30,7 @@ const PrescriptionLookup = () => {
     }
 
     setIsSubmitting(true);
-
+    
     // Simulate OTP sending delay
     setTimeout(() => {
       setIsOtpSent(true);
@@ -44,15 +44,15 @@ const PrescriptionLookup = () => {
 
   const handleVerifyOtp = (otp: string) => {
     setIsSubmitting(true);
-
+    
     // Simulate verification delay
     setTimeout(() => {
       setIsSubmitting(false);
       toast({
         title: "Success!",
-        description: "Your prescription has been found",
+        description: "You have successfully logged in",
       });
-      navigate("/prescriptions"); // Redirect to prescription details page
+      navigate("/dashboard");
     }, 1500);
   };
 
@@ -72,16 +72,16 @@ const PrescriptionLookup = () => {
         >
           <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]"></div>
         </div>
-
+        
         {/* Content */}
         <div className="container max-w-md px-4 z-10">
           <Card className="w-full backdrop-blur-lg bg-white/90 shadow-xl">
             <CardHeader className="space-y-1">
               <CardTitle className="text-2xl font-bold text-center">
-                Prescription Lookup
+                Make someone pain go away...
               </CardTitle>
               <CardDescription className="text-center">
-                Enter your email to retrieve your prescription
+                Enter your email to get OTP
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -109,7 +109,7 @@ const PrescriptionLookup = () => {
                   </Button>
                 </form>
               ) : (
-                <OTPInputForm onVerify={handleVerifyOtp} isSubmitting={isSubmitting} page="d"/>
+                <OTPInputForm onVerify={handleVerifyOtp} isSubmitting={isSubmitting} page="h"/>
               )}
               
               <div className="text-center text-sm text-gray-500 mt-4">
@@ -126,4 +126,4 @@ const PrescriptionLookup = () => {
   );
 };
 
-export default PrescriptionLookup;
+export default DoctorLoginPage;

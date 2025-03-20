@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import {
+import { 
   SidebarProvider,
   Sidebar,
   SidebarContent,
@@ -13,9 +13,11 @@ import {
 import { FileText, User, Folder, LogOut } from "lucide-react";
 import DashboardHeader from "@/components/DashboardHeader";
 import Footer from "@/components/Footer";
-
+import { useNavigate } from "react-router-dom";
 const DashboardPage = () => {
   // Mock user data
+  const navigate= useNavigate();
+
   const userData = {
     name: "John Doe",
     phone: "+91 9876543210",
@@ -30,14 +32,16 @@ const DashboardPage = () => {
     ],
   };
 
+
+
   return (
     <SidebarProvider>
       <div className="min-h-screen flex flex-col w-full bg-[#f5f7fa]">
-        <DashboardHeader />
-        <div className="flex flex-1">
+        <DashboardHeader page="b"/>
+        <div className="flex flex-1 min-h-screen pt-8 mt-12 pb-6 mb-10">
           {/* Sidebar */}
-          <Sidebar variant="inset" side="left" collapsible="icon">
-            <SidebarContent className="pt-6">
+          <Sidebar variant="inset" side="left" collapsible="icon" className="fixed h-full z-0">
+            <SidebarContent className="pt-8 mt-12">
               <SidebarMenu>
                 <SidebarMenuItem>
                   <SidebarMenuButton 
@@ -45,23 +49,25 @@ const DashboardPage = () => {
                     tooltip="Details"
                   >
                     <User />
-                    <span>Details</span>
+                    <span >Details</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                   <SidebarMenuButton 
                     tooltip="Records"
+                    onClick={()=>navigate('/e')}
                   >
                     <Folder />
-                    <span>Records</span>
+                    <span onClick={()=>navigate('/e')}>Records</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                   <SidebarMenuButton 
                     tooltip="Medical Certificate"
+                    onClick={()=>navigate('/f')}
                   >
                     <FileText />
-                    <span>Medical Certificate</span>
+                    <span onClick={()=>navigate('/f')}>Medical Certificate</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               </SidebarMenu>
@@ -69,7 +75,7 @@ const DashboardPage = () => {
           </Sidebar>
 
           {/* Main content */}
-          <SidebarInset>
+          <SidebarInset >
             <div className="p-6">
               <div className="mb-6">
                 <h1 className="text-2xl font-bold mb-2">Patient Dashboard</h1>
@@ -159,9 +165,10 @@ const DashboardPage = () => {
             </div>
           </SidebarInset>
         </div>
-        <Footer />
+        <Footer/>
       </div>
     </SidebarProvider>
+    
   );
 };
 

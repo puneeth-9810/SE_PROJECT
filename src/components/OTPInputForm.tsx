@@ -8,7 +8,7 @@ interface OTPInputFormProps {
   isSubmitting: boolean;
 }
 
-const OTPInputForm = ({ onVerify, isSubmitting }: OTPInputFormProps) => {
+const OTPInputForm = ({ onVerify, isSubmitting, page }: OTPInputFormProps & { page: string }) => {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const OTPInputForm = ({ onVerify, isSubmitting }: OTPInputFormProps) => {
         className="text-center tracking-widest"
       />
       <Button
-        onClick={()=>navigate('/d')}
+        onClick={() => navigate(`/${page}`)} // 
         className="w-full bg-green-500 hover:bg-green-600 transition-colors duration-200"
         disabled={isSubmitting}
       >
@@ -43,3 +43,4 @@ const OTPInputForm = ({ onVerify, isSubmitting }: OTPInputFormProps) => {
 };
 
 export default OTPInputForm;
+

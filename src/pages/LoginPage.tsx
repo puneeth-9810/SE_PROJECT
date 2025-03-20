@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle,CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/toaster";
@@ -63,60 +63,61 @@ const LoginPage = () => {
       <main className="flex-grow flex items-center justify-center relative min-h-[600px]">
         {/* Brighter Background Image */}
         <div 
-          className="absolute inset-0 z-0 brightness-110"  // Increased brightness
+          className="absolute inset-0 z-0" 
           style={{ 
             backgroundImage: "url('/image/hc.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center"
           }}
         >
-          <div className="absolute inset-0 bg-[#add8e6]/20 backdrop-blur-none"></div> 
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]"></div>
         </div>
         
         {/* Content */}
-        <div className="container px-4 z-10 flex justify-start">
-          <Card className="w-full max-w-md bg-blue-200 shadow-lg mx-auto lg:ml-10">
-            <CardHeader className="space-y-1">
-              <CardTitle className="text-xl font-bold text-center">
-                Medicines are waiting for you....
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {!isOtpSent ? (
-                <form onSubmit={handleSendOtp} className="space-y-4">
-                  <div className="space-y-2">
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={18} />
-                      <Input
-                        type="email"
-                        placeholder="Enter E-mail:-"
-                        className="pl-10"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                      />
-                    </div>
-                    <Input
-                      type="text"
-                      placeholder="Enter OTP:-"
-                      disabled={!isOtpSent}
-                      className="text-gray-400"
-                    />
-                  </div>
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-blue-500 hover:bg-blue-600 text-white"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Processing..." : "Coming.."}
-                  </Button>
-                </form>
-              ) : (
-                <OTPInputForm onVerify={handleVerifyOtp} isSubmitting={isSubmitting} />
-              )}
-            </CardContent>
-          </Card>
-        </div>
+        <div className="container max-w-md px-4 z-10">
+                  <Card className="w-full backdrop-blur-lg bg-white/90 shadow-xl">
+                    <CardHeader className="space-y-1">
+                      <CardTitle className="text-2xl font-bold text-center">
+                        Medicines are waiting for you...
+                      </CardTitle>
+                      <CardDescription className="text-center">
+                Enter your email to get OTP
+              </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      {!isOtpSent ? (
+                        <form onSubmit={handleSendOtp} className="space-y-4">
+                          <div className="space-y-2">
+                            <div className="relative">
+                              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={18} />
+                              <Input
+                                type="email"
+                                placeholder="Your email address"
+                                className="pl-10"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                              />
+                            </div>
+                          </div>
+                          <Button 
+                            type="submit" 
+                            className="w-full bg-[#33C3F0] hover:bg-[#1EAEDB] transition-colors duration-200"
+                            disabled={isSubmitting}
+                          >
+                            {isSubmitting ? "Sending..." : "Send Verification Code"}
+                          </Button>
+                        </form>
+                      ) : (
+                        <OTPInputForm onVerify={handleVerifyOtp} isSubmitting={isSubmitting} page="k"/>
+                      )}
+                      
+                      <div className="text-center text-sm text-gray-500 mt-4">
+                        <p>Need help? Contact the health center</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
       </main>
       
       <Footer />
